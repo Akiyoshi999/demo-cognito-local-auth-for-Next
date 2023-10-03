@@ -11,10 +11,10 @@ const {
   Link,
 } = require("@mui/material");
 
-const Login = () => {
+const Signup = () => {
   const router = useRouter();
   const handleClick = () => {
-    router.push("/signup");
+    router.push("/confirm");
   };
 
   return (
@@ -28,7 +28,7 @@ const Login = () => {
         }}
       >
         <Typography component="h1" variant="h4">
-          Login
+          Sign up
         </Typography>
         <Box component="form" noValidate sx={{ mt: 1 }}>
           <TextField
@@ -62,20 +62,17 @@ const Login = () => {
             mb: 2,
           }}
         >
-          Login
+          Sign up
         </Button>
 
         <Grid container>
-          <Grid item xs>
-            <Link href="#" variant="body2">
-              Forget password
-            </Link>
-          </Grid>
-
           <Grid item>
-            <Link href="/signup" variant="body2">
-              Sign up
-            </Link>
+            <Typography>
+              Already have an account?
+              <Link href="/login" variant="body2" sx={{ ml: 2 }}>
+                Login
+              </Link>
+            </Typography>
           </Grid>
         </Grid>
       </Box>
@@ -83,4 +80,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Signup;
