@@ -12,9 +12,12 @@
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@mui/material": "^5.14.11",
+    "amazon-cognito-identity-js": "^6.3.6",
+    "aws-sdk": "^2.1468.0",
     "next": "latest",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
     "autoprefixer": "latest",

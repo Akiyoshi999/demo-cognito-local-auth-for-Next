@@ -1,14 +1,16 @@
+"use client";
+import { useVerifConfirm } from "./logic";
+
 const {
   Container,
   Box,
   Typography,
   TextField,
   Button,
-  Grid,
-  Link,
 } = require("@mui/material");
 
 const Confirm = () => {
+  const { confirmData, setConfirmData, handleChange } = useVerifConfirm();
   return (
     <Container maxWidth="xs">
       <Box
@@ -22,11 +24,22 @@ const Confirm = () => {
         <Typography component="h1" variant="h4">
           アカウントの確認
         </Typography>
-        <Typography>
+        {/* <Typography>
           検証コードを xxx@xxx
           にメールで送信しました。アカウントを確認するには、以下に検証コードを入力してください。
-        </Typography>
+        </Typography> */}
         <Box component="form" noValidate sx={{ mt: 1 }}>
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            id="email"
+            label="email"
+            name="email"
+            autoComplete="email"
+            autoFocus
+            onChange={handleChange}
+          />
           <TextField
             margin="normal"
             required
