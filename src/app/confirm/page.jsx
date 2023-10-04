@@ -10,7 +10,7 @@ const {
 } = require("@mui/material");
 
 const Confirm = () => {
-  const { confirmData, setConfirmData, handleChange } = useVerifConfirm();
+  const { handleChange, handleConfirm } = useVerifConfirm();
   return (
     <Container maxWidth="xs">
       <Box
@@ -22,7 +22,7 @@ const Confirm = () => {
         }}
       >
         <Typography component="h1" variant="h4">
-          アカウントの確認
+          Verify your account
         </Typography>
         {/* <Typography>
           検証コードを xxx@xxx
@@ -45,21 +45,23 @@ const Confirm = () => {
             required
             fullWidth
             id="verifCode"
-            label="検証コード"
+            label="verifCode"
             name="verifCode"
             autoFocus
+            onChange={handleChange}
           />
         </Box>
         <Button
           type="submit"
           fullWidth
           variant="contained"
+          onClick={handleConfirm}
           sx={{
             mt: 3,
             mb: 2,
           }}
         >
-          アカウントの確認
+          Verify your account
         </Button>
       </Box>
     </Container>

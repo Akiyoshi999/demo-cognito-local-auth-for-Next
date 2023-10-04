@@ -34,6 +34,7 @@ const Signup = () => {
             id="email"
             label="email"
             name="email"
+            defaultValue={formData.email}
             autoComplete="email"
             autoFocus
             onChange={handleChange}

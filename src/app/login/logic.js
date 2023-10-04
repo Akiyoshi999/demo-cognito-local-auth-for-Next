@@ -4,13 +4,12 @@ import { CognitoUser, CognitoUserPool } from "amazon-cognito-identity-js";
 
 export const useVerifConfirm = () => {
   const [confirmData, setConfirmData] = useState({
-    email: "",
-    verifCode: "",
+    email: process.env.EMAIL,
+    password: "P@ssw0rd",
   });
 
   const handleChange = (event) => {
     setConfirmData({ ...confirmData, [event.target.name]: event.target.value });
-    console.log(confirmData);
   };
 
   const router = useRouter();

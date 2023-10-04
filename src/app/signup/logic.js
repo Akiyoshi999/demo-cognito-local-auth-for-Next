@@ -4,7 +4,7 @@ import { CognitoUserPool } from "amazon-cognito-identity-js";
 
 export const useSignUpForm = () => {
   const [formData, setFormData] = useState({
-    email: "",
+    email: process.env.EMAIL,
     password: "P@ssw0rd",
   });
 
@@ -23,7 +23,7 @@ export const useSignUpForm = () => {
 
     const userPool = new CognitoUserPool(poolData);
     const username = "hoge2@example.com";
-    // const username = "zundokokiyoshi999+test@gmail.com";
+    // const username = process.env.EMAIL;
     // const password = "P@ssw0rd";
     userPool.signUp(
       formData.email,
