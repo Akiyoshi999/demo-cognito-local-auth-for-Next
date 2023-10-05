@@ -1,5 +1,6 @@
 "use client";
-import { useRouter } from "next/navigation";
+
+import { useLoginForm } from "./logic";
 
 const {
   Container,
@@ -12,10 +13,7 @@ const {
 } = require("@mui/material");
 
 const Login = () => {
-  const router = useRouter();
-  const handleClick = () => {
-    router.push("/signup");
-  };
+  const { loginData, setLoginData, handleChange, handleLogin } = useLoginForm();
 
   return (
     <Container maxWidth="xs">
@@ -40,6 +38,8 @@ const Login = () => {
             name="email"
             autoComplete="email"
             autoFocus
+            onChange={handleChange}
+            defaultValue={loginData.email}
           />
           <TextField
             margin="normal"
@@ -50,13 +50,15 @@ const Login = () => {
             name="password"
             type="password"
             autoComplete="current-password"
+            onChange={handleChange}
+            defaultValue={loginData.password}
           />
         </Box>
         <Button
           type="submit"
           fullWidth
           variant="contained"
-          onClick={handleClick}
+          onClick={handleLogin}
           sx={{
             mt: 3,
             mb: 2,

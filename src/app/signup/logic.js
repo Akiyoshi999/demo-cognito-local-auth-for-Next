@@ -1,6 +1,6 @@
-import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { CognitoUserPool } from "amazon-cognito-identity-js";
+import { useRouter } from "next/navigation";
 
 export const useSignUpForm = () => {
   const [formData, setFormData] = useState({
@@ -10,21 +10,16 @@ export const useSignUpForm = () => {
 
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
-    console.log(formData);
   };
 
   const router = useRouter();
   const handleSignUp = () => {
-    console.log(formData.email, formData.password);
     const poolData = {
       UserPoolId: process.env.USER_POOL_ID,
       ClientId: process.env.CLIENT_ID,
     };
 
     const userPool = new CognitoUserPool(poolData);
-    const username = "hoge2@example.com";
-    // const username = process.env.EMAIL;
-    // const password = "P@ssw0rd";
     userPool.signUp(
       formData.email,
       formData.password,
@@ -37,6 +32,7 @@ export const useSignUpForm = () => {
         }
         const cognitoUser = result.user;
         console.log("user name is " + cognitoUser.getUsername());
+        router.push("/confirm", { query: { email: formData.email } });
       }
     );
   };

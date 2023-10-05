@@ -1,19 +1,16 @@
-import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { CognitoUser, CognitoUserPool } from "amazon-cognito-identity-js";
 
 export const useVerifConfirm = () => {
   const [confirmData, setConfirmData] = useState({
-    email: "",
+    email: process.env.EMAIL,
     verifCode: "",
   });
 
   const handleChange = (event) => {
     setConfirmData({ ...confirmData, [event.target.name]: event.target.value });
-    console.log(confirmData);
   };
 
-  const router = useRouter();
   const handleConfirm = () => {
     const poolData = {
       UserPoolId: process.env.USER_POOL_ID,

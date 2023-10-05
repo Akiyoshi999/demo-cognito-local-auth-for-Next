@@ -1,4 +1,5 @@
 "use client";
+import { useRouter } from "next/router";
 import { useVerifConfirm } from "./logic";
 
 const {
@@ -10,7 +11,9 @@ const {
 } = require("@mui/material");
 
 const Confirm = () => {
-  const { handleChange, handleConfirm } = useVerifConfirm();
+  const { confirmData, setConfirmData, handleChange, handleConfirm } =
+    useVerifConfirm();
+  // setConfirmData(router.query.email);
   return (
     <Container maxWidth="xs">
       <Box
@@ -39,6 +42,7 @@ const Confirm = () => {
             autoComplete="email"
             autoFocus
             onChange={handleChange}
+            defaultValue={confirmData.email}
           />
           <TextField
             margin="normal"
@@ -47,7 +51,6 @@ const Confirm = () => {
             id="verifCode"
             label="verifCode"
             name="verifCode"
-            autoFocus
             onChange={handleChange}
           />
         </Box>
