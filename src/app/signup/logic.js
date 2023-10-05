@@ -32,7 +32,8 @@ export const useSignUpForm = () => {
         }
         const cognitoUser = result.user;
         console.log("user name is " + cognitoUser.getUsername());
-        router.push("/confirm", { query: { email: formData.email } });
+        localStorage.setItem("username", cognitoUser.getUsername());
+        router.push("/confirm");
       }
     );
   };

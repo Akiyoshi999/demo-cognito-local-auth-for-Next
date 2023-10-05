@@ -1,6 +1,7 @@
 "use client";
 import { Alert, Button } from "@mui/material";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export default function Home() {
@@ -10,6 +11,10 @@ export default function Home() {
   };
   const handleClose = () => {
     setAlert(false);
+  };
+  const handleRouter = () => {
+    const router = useRouter();
+    router.push("/confirm");
   };
 
   return (
@@ -25,7 +30,9 @@ export default function Home() {
       <Button variant="contained" onClick={handleClick}>
         contained
       </Button>
-      <Button variant="outlined">outlined</Button>
+      <Button variant="outlined" onClick={handleRouter}>
+        confirm page GO
+      </Button>
     </>
   );
 }

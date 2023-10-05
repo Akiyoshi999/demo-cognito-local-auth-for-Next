@@ -1,5 +1,4 @@
 "use client";
-import { useRouter } from "next/router";
 import { useVerifConfirm } from "./logic";
 
 const {
@@ -13,7 +12,6 @@ const {
 const Confirm = () => {
   const { confirmData, setConfirmData, handleChange, handleConfirm } =
     useVerifConfirm();
-  // setConfirmData(router.query.email);
   return (
     <Container maxWidth="xs">
       <Box

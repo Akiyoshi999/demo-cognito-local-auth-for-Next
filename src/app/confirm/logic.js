@@ -3,7 +3,7 @@ import { CognitoUser, CognitoUserPool } from "amazon-cognito-identity-js";
 
 export const useVerifConfirm = () => {
   const [confirmData, setConfirmData] = useState({
-    email: process.env.EMAIL,
+    email: localStorage.getItem("username"),
     verifCode: "",
   });
 
