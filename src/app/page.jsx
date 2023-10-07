@@ -1,38 +1,50 @@
 "use client";
-import { Alert, Button } from "@mui/material";
-import Link from "next/link";
+import { Box, Button, Container, Grid, Typography } from "@mui/material";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
 
 export default function Home() {
-  const [alert, setAlert] = useState(false);
-  const handleClick = () => {
-    setAlert(!alert);
-  };
-  const handleClose = () => {
-    setAlert(false);
-  };
-  const handleRouter = () => {
-    const router = useRouter();
-    router.push("/confirm");
+  const router = useRouter();
+  const handleRouter = (url = "") => {
+    router.push(url);
   };
 
   return (
     <>
-      {alert ? (
-        <Alert severity="success" onClose={handleClose}>
-          <Link href="/signup">SUCCESS</Link>
-        </Alert>
-      ) : (
-        ""
-      )}
-      <Button>text</Button>
-      <Button variant="contained" onClick={handleClick}>
-        contained
-      </Button>
-      <Button variant="outlined" onClick={handleRouter}>
-        confirm page GO
-      </Button>
+      <Container maxWidth="xs">
+        <Box
+          sx={{
+            marginTop: 8,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          <Typography component="h1" variant="h4">
+            Information
+          </Typography>
+          <Box component="form" noValidate sx={{ mt: 1 }}></Box>
+          <Grid container spacing={2} mt={2}>
+            <Grid item xs={6}>
+              <Button
+                fullWidth
+                variant="outlined"
+                onClick={() => handleRouter("/signup")}
+              >
+                Click here to sign up
+              </Button>
+            </Grid>
+            <Grid item xs={6}>
+              <Button
+                fullWidth
+                variant="contained"
+                onClick={() => handleRouter("/login")}
+              >
+                Click here to login
+              </Button>
+            </Grid>
+          </Grid>
+        </Box>
+      </Container>
     </>
   );
 }
